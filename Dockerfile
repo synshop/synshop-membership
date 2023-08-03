@@ -14,8 +14,10 @@ COPY src .
 
 EXPOSE 8080
 
-USER nobody:nobody
+# Nobody user
+USER 65532:65532
 # We like read-only filesystems
 ENV PYTHONPYCACHEPREFIX=/tmp/pycache
-CMD ["/srv/.venv/bin/python3", "app.py"]
+
+ENTRYPOINT ["/srv/.venv/bin/python3", "app.py"]
 

@@ -1,1 +1,7 @@
 Hello from template
+
+<ul>
+  % for name in headers.keys():
+    <li>{{name}}: {{headers.get(name)}}</li>
+  % end
+</ul>
