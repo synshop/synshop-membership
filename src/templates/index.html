@@ -1,7 +1,13 @@
-Hello from template
+Hello!
+
+<hr>
+
+<h1>Email: {{ logged_in_email }}</h1>
+<h2>Stripe Customer Id: {{ stripe_customer.id }}</h2>
+<h2>Stripe Subscription Count: {{ len(stripe_subscriptions.data) }}</h2>
 
 <ul>
   % for name in headers.keys():
-    <li>{{name}}: {{headers.get(name)}}</li>
+    <li>{{name}}: {{ 'XX_REDACTED_XX' if name == 'Cookie' else headers.get(name) }}</li>
   % end
 </ul>
