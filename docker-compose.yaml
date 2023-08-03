@@ -2,6 +2,7 @@ version: '3.7'
 services:
   proxy:
     image: quay.io/oauth2-proxy/oauth2-proxy:v7.4.0
+    read_only: true
     ports:
     - target: 4180
       published: 8080
@@ -34,9 +35,11 @@ services:
       OAUTH2_SHOW_DEBUG_ON_ERROR: 'true'
   membership:
     image: membership
+    read_only: true
     build:
       context: .
       dockerfile: Dockerfile
     environment:
-      STRIPE_API_KEY=${STRIPE_API_KEY}
+      PYTHONPYCACHEPREFIX: /tmp/pycache
+      STRIPE_API_KEY: ${STRIPE_API_KEY}
 
