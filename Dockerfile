@@ -1,9 +1,9 @@
 FROM docker.io/library/python:3.11-alpine AS builder
 
 RUN pip3 install pipenv
-COPY Pipfile* /srv
-ENV PIPENV_VENV_IN_PROJECT=1 PYTHONPYCACHEPREFIX=/tmp/pycache
 WORKDIR /srv
+COPY Pipfile* .
+ENV PIPENV_VENV_IN_PROJECT=1 PYTHONPYCACHEPREFIX=/tmp/pycache
 RUN pipenv install --deploy
 
 FROM docker.io/library/python:3.11-alpine AS runner
