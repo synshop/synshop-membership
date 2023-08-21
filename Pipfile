@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 bottle = "*"
 stripe = "*"
-bottle-log = "*"
 pyjwt = "*"
 
 [dev-packages]

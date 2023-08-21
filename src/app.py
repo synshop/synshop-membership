@@ -1,9 +1,9 @@
 from bottle import Bottle, request, template, redirect
 import os, stripe, requests, json, logging, jwt
 
-log = logging.getLogger(__name__)
-log.setLevel(logging.INFO)
+logging.basicConfig(level=logging.INFO)
 
+log = logging.getLogger()
 app = Bottle()
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -13,9 +13,15 @@ stripe.api_version="2022-11-15"
 
 @app.route('/')
 def index():
+  log.debug("debug log")
+  log.info("info log")
+  log.warning("warning log")
+  log.error("error log")
+
   jwt_token=request.headers.get('Authorization').replace('Bearer ', '') if 'Authorization' in request.headers else None
   try:
     auth=jwt.decode(jwt_token, options={"verify_signature": False}) if jwt_token else None
+    log.info("Auth: %s", auth)
   except Exception as e:
     log.error("Error parsing jwt_token: %s", jwt_token)
     log.exception(e)
