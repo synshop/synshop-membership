@@ -59,5 +59,13 @@ def index():
     stripe_api_public_key=os.getenv('STRIPE_API_PUBLIC_KEY')
   )
 
+@app.route('/hello')
+def index():
+  return "hello"
+
+@app.route('/public/email_verification')
+def index():
+  return 'Your email '+request.query.get('email', '')+' isn\'t verified yet. <a href="/oauth2/sign_in?rd=/hello">Try again</a> (select forgot password if you need a new verification link)';
+
 app.run(host='0.0.0.0', port=8080)
 

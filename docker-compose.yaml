@@ -14,7 +14,7 @@ services:
       OAUTH2_PROXY_UPSTREAMS: http://membership:8080/
       OAUTH2_PROXY_REDIRECT_URL: http://localhost:8080/oauth2/callback 
      
-      OAUTH2_PROXY_SKIP_AUTH_ROUTES: 'GET=^/favicon.ico$$'
+      OAUTH2_PROXY_SKIP_AUTH_ROUTES: 'GET=^/favicon.ico$$,^/public/'
      
       OAUTH2_PROXY_FORCE_CODE_CHALLENGE_METHOD: S256
       OAUTH2_PROXY_EMAIL_DOMAINS: '*'
